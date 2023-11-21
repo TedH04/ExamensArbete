@@ -1,8 +1,8 @@
-﻿using AuthenticationApi.Entities;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WebApi.Entities;
 
-namespace AuthenticationApi.Db;
+namespace WebApi.Data;
 
 public class AppDbContext : IdentityDbContext<User>
 {
@@ -10,5 +10,6 @@ public class AppDbContext : IdentityDbContext<User>
     {
     }
     public DbSet<User> users { get; set; }
+    public DbSet<JobRequest> jobRequests { get; set; }
 }
 

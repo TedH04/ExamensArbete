@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AuthenticationApi.Dtos;
+namespace WebApi.Dtos;
 
 public class LoginRequest
 {
