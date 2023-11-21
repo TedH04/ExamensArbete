@@ -14,13 +14,11 @@ public class AuthenticationService : IAuthenticationService
 {
     private readonly AppDbContext _context;
     private readonly IConfiguration _configuration;
-    private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public AuthenticationService(AppDbContext context, IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+    public AuthenticationService(AppDbContext context, IConfiguration configuration)
     {
         _context = context;
         _configuration = configuration;
-        _httpContextAccessor = httpContextAccessor;
     }
     #region Login/Register
 
@@ -134,39 +132,5 @@ public class AuthenticationService : IAuthenticationService
         return true;
     }
     #endregion
-
-    public async Task<JobRequest> CreateJobRequest(JobRequestDto jobRequestDto)
-    {
-        var httpContext = _httpContextAccessor.HttpContext;
-        if (httpContext?.User.Identity.IsAuthenticated != true)
-        {
-            throw new UnauthorizedAccessException("User must be logged in to create a job request.");
-        }
-
-        var userEmail = httpContext.User.FindFirst(ClaimTypes.Email)?.Value;
-        if (string.IsNullOrWhiteSpace(userEmail))
-        {
-            throw new InvalidOperationException("User's email not found in the token.");
-        }
-
-        var jobRequest = new JobRequest
-        {
-            Id = jobRequestDto.Id,
-            CustomerName = userEmail, // set from currently loggedin user
-            JobTitle = jobRequestDto.JobTitle,
-            JobDescription = jobRequestDto.JobDescription,
-            JobAddress = jobRequestDto.JobAddress,
-            JobCity = jobRequestDto.JobCity,
-            JobZip = jobRequestDto.JobZip,
-            ContactEmail = userEmail, // set from currently loggedin user
-            IsCompany = jobRequestDto.IsCompany
-        };
-
-        _context.jobRequests.Add(jobRequest);
-        await _context.SaveChangesAsync();
-
-        return jobRequest;
-    }
-
 }
 

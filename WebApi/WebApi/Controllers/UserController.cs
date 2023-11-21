@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 using WebApi.Dtos;
 using WebApi.Services;
 
@@ -11,10 +11,13 @@ namespace WebApi.Controllers;
 public class UserController : ControllerBase
 {
     private readonly IAuthenticationService _authenticationService;
+    private readonly UserManager<IdentityUser> _userManager;
 
-    public UserController(IAuthenticationService authenticationService)
+    public UserController(IAuthenticationService authenticationService, UserManager<IdentityUser> userManager)
     {
         _authenticationService = authenticationService;
+        _userManager = userManager;
+
     }
 
     [AllowAnonymous]
@@ -40,22 +43,25 @@ public class UserController : ControllerBase
 
         return Ok(response);
     }
-    [HttpPost("CreateJobRequest")]
-    public async Task<IActionResult> CreateJobRequest(JobRequestDto jobRequestDto)
+
+    [HttpPost("assignrole")]
+    public async Task<IActionResult> AssignRole(string userId, string role)
     {
-        if (!User.Identity.IsAuthenticated)
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
         {
-            return Unauthorized("User must be logged in to create a job request.");
+            return NotFound("User not found");
         }
 
-        var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
-        if (string.IsNullOrWhiteSpace(userEmail))
+        var result = await _userManager.AddToRoleAsync(user, role);
+        if (result.Succeeded)
         {
-            return BadRequest("User's email not found.");
+            return Ok();
         }
 
-        var jobRequest = await _authenticationService.CreateJobRequest(jobRequestDto);
-        return Ok(jobRequest);
+        return BadRequest("Failed to assign role");
     }
+
+
 }
 
