@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Dtos;
 using WebApi.Services;
@@ -11,12 +10,11 @@ namespace WebApi.Controllers;
 public class UserController : ControllerBase
 {
     private readonly IAuthenticationService _authenticationService;
-    private readonly UserManager<IdentityUser> _userManager;
+    //private readonly UserManager<IdentityUser> _userManager;
 
-    public UserController(IAuthenticationService authenticationService, UserManager<IdentityUser> userManager)
+    public UserController(IAuthenticationService authenticationService)
     {
         _authenticationService = authenticationService;
-        _userManager = userManager;
 
     }
 
@@ -43,25 +41,26 @@ public class UserController : ControllerBase
 
         return Ok(response);
     }
-
-    [HttpPost("assignrole")]
-    public async Task<IActionResult> AssignRole(string userId, string role)
+    [HttpGet("GetAllUsers")]
+    public async Task<IActionResult> GetAllUsers()
     {
-        var user = await _userManager.FindByIdAsync(userId);
-        if (user == null)
-        {
-            return NotFound("User not found");
-        }
-
-        var result = await _userManager.AddToRoleAsync(user, role);
-        if (result.Succeeded)
-        {
-            return Ok();
-        }
-
-        return BadRequest("Failed to assign role");
+        var users = await _authenticationService.GetAllUsersAsync();
+        return Ok(users);
     }
 
+    [HttpPost("AssignRole")]
+    //[Authorize(Roles = "Admin")]
+    public async Task<IActionResult> AssignRole(string userId, string roleName)
+    {
+        var result = await _authenticationService.AssignRoleToUser(userId, roleName);
+
+        if (!result)
+        {
+            return BadRequest("Failed to assign role");
+        }
+
+        return Ok("Role assigned successfully");
+    }
 
 }
 

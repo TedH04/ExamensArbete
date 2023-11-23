@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -14,11 +15,15 @@ public class AuthenticationService : IAuthenticationService
 {
     private readonly AppDbContext _context;
     private readonly IConfiguration _configuration;
+    private readonly UserManager<User> _userManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
 
-    public AuthenticationService(AppDbContext context, IConfiguration configuration)
+    public AuthenticationService(AppDbContext context, IConfiguration configuration, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
     {
         _context = context;
         _configuration = configuration;
+        _userManager = userManager;
+        _roleManager = roleManager;
     }
     #region Login/Register
 
@@ -68,6 +73,31 @@ public class AuthenticationService : IAuthenticationService
 
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
+
+    public async Task<IEnumerable<User>> GetAllUsersAsync()
+    {
+        var users = await _context.Users.ToListAsync();
+        return users;
+    }
+
+    public async Task<bool> AssignRoleToUser(string userId, string roleName)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            return false; // User does not exist
+        }
+
+        var roleExists = await _roleManager.RoleExistsAsync(roleName);
+        if (!roleExists)
+        {
+            return false; // Role does not exist
+        }
+
+        var result = await _userManager.AddToRoleAsync(user, roleName);
+        return result.Succeeded;
+    }
+
 
     private JwtSecurityToken GetToken(IEnumerable<Claim> authClaims)
     {

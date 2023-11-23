@@ -99,6 +99,20 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+        await IdentityDataInitializer.SeedRoles(roleManager);
+    }
+    catch (Exception ex)
+    {
+        throw new Exception("Error SeedRoles", ex);
+    }
+}
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

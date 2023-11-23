@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using WebApi.Dtos;
 using WebApi.Services;
@@ -35,6 +36,7 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("GetAllJobRequests")]
+        [Authorize(Roles = "Admin,Employee")]
         public async Task<IActionResult> GetAllJobRequests()
         {
             var jobRequests = await _jobRequestService.GetAllJobRequestsAsync();
@@ -42,6 +44,7 @@ namespace WebApi.Controllers
         }
 
         [HttpDelete("DeleteJobRequest/{jobId}")]
+        [Authorize(Roles = "Admin,Employee")]
         public async Task<IActionResult> DeleteJobRequest(int jobId)
         {
             var result = await _jobRequestService.DeleteJobRequest(jobId);
