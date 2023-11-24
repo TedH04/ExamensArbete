@@ -42,6 +42,7 @@ public class UserController : ControllerBase
         return Ok(response);
     }
     [HttpGet("GetAllUsers")]
+    [Authorize(Roles = "Admin,Employee")]
     public async Task<IActionResult> GetAllUsers()
     {
         var users = await _authenticationService.GetAllUsersAsync();
@@ -49,7 +50,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("AssignRole")]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> AssignRole(string userId, string roleName)
     {
         var result = await _authenticationService.AssignRoleToUser(userId, roleName);

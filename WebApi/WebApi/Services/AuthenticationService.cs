@@ -42,7 +42,6 @@ public class AuthenticationService : IAuthenticationService
             Email = request.Email,
             UserName = request.Username,
             PhoneNumber = request.PhoneNumber,
-            // Assuming PasswordHash is the field to store hashed passwords
             PasswordHash = HashPassword(request.Password)
         };
 
@@ -54,20 +53,28 @@ public class AuthenticationService : IAuthenticationService
 
     public async Task<string> Login(LoginRequest request)
     {
-        var user = await _context.Users
-            .FirstOrDefaultAsync(u => u.UserName == request.Username || u.Email == request.Username);
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == request.Username || u.Email == request.Username);
 
-        if (user is null || !VerifyPasswordHash(request.Password, user.PasswordHash))
+        if (user == null || !VerifyPasswordHash(request.Password, user.PasswordHash))
         {
             throw new ArgumentException($"Unable to authenticate user {request.Username}");
         }
 
+        // Retrieve roles for the user
+        var userRoles = await _userManager.GetRolesAsync(user);
+
         var authClaims = new List<Claim>
+    {
+        new Claim(ClaimTypes.Name, user.UserName),
+        new Claim(ClaimTypes.Email, user.Email),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+    };
+
+        // Add roles to the claims
+        foreach (var role in userRoles)
         {
-            new(ClaimTypes.Name, user.UserName),
-            new(ClaimTypes.Email, user.Email),
-            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-        };
+            authClaims.Add(new Claim(ClaimTypes.Role, role));
+        }
 
         var token = GetToken(authClaims);
 
