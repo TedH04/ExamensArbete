@@ -8,6 +8,7 @@ namespace WebApi.Dtos
         public int Id { get; set; }
         [Required]
         public string? CustomerName { get; set; }
+        public string? CompanyName { get; set; }
         [Required]
         public string? JobTitle { get; set; }
         [Required]
@@ -18,6 +19,7 @@ namespace WebApi.Dtos
         public string? JobCity { get; set; }
         [Required]
         public string? JobZip { get; set; }
+        public string? OrgNumber { get; set; }
         [Required]
         public string? ContactEmail { get; set; }
         [Required]

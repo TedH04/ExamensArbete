@@ -35,11 +35,13 @@ namespace WebApi.Services
             {
                 Id = jobRequestDto.Id,
                 CustomerName = userEmail, // set from currently loggedin user (if logged in)
+                CompanyName = jobRequestDto.CompanyName,
                 JobTitle = jobRequestDto.JobTitle,
                 JobDescription = jobRequestDto.JobDescription,
                 JobAddress = jobRequestDto.JobAddress,
                 JobCity = jobRequestDto.JobCity,
                 JobZip = jobRequestDto.JobZip,
+                OrgNumber = jobRequestDto.OrgNumber,
                 ContactEmail = userEmail, // set from currently loggedin user (if logged in)
                 IsCompany = jobRequestDto.IsCompany
             };
@@ -57,11 +59,13 @@ namespace WebApi.Services
             {
                 Id = jr.Id,
                 CustomerName = jr.CustomerName,
+                CompanyName = jr.CompanyName,
                 JobTitle = jr.JobTitle,
                 JobDescription = jr.JobDescription,
                 JobAddress = jr.JobAddress,
                 JobCity = jr.JobCity,
                 JobZip = jr.JobZip,
+                OrgNumber = jr.OrgNumber,
                 ContactEmail = jr.ContactEmail,
                 IsCompany = jr.IsCompany
             }).ToList();

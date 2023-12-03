@@ -1,0 +1,102 @@
+/* General Styling */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+  }
+  
+  .section-title h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .section-title p {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 16px;
+    color: #666;
+  }
+  
+  /* Form Styling */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 123, 255, 0.6);
+    outline: none;
+  }
+  
+  /* Button Styling */
+  .btn-custom {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .btn-custom:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Contact Info Styling */
+  .contact-info {
+    padding: 20px;
+    font-size: 16px;
+  }
+  
+  .contact-item {
+    margin-bottom: 20px;
+  }
+  
+  .contact-item i {
+    margin-right: 10px;
+    color: #007bff;
+  }
+  
+  /* Social Icons Styling */
+  .social ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .social ul li {
+    display: inline;
+    margin: 0 10px;
+  }
+  
+  .social ul li a {
+    color: #666;
+    font-size: 24px;
+    transition: color 0.3s;
+  }
+  
+  .social ul li a:hover {
+    color: #007bff;
+  }
+  
+  /* Footer Styling */
+  #footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+  }
+  

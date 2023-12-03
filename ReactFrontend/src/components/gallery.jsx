@@ -1,5 +1,5 @@
-import { Image } from "./image";
 import React from "react";
+import "./styling/gallery.css";
 
 export const Gallery = (props) => {
   return (
@@ -20,11 +20,6 @@ export const Gallery = (props) => {
                     key={`${d.title}-${i}`}
                     className="col-sm-6 col-md-4 col-lg-4"
                   >
-                    <Image
-                      title={d.title}
-                      largeImage={d.largeImage}
-                      smallImage={d.smallImage}
-                    />
                   </div>
                 ))
               : "Loading..."}
