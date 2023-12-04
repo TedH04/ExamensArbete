@@ -1,46 +1,50 @@
 /* General Styling */
 .container {
+    display: flex; /* Use flexbox to center children */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto; /* Center the container */
     padding: 15px;
   }
   
-  .section-title h2 {
+
+.section-title h2 {
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
-  }
-  
-  .section-title p {
+}
+
+.section-title p {
     text-align: center;
     margin-bottom: 40px;
     font-size: 16px;
     color: #666;
-  }
-  
-  /* Form Styling */
-  .form-group {
+}
+
+/* Form Styling */
+.form-group {
     margin-bottom: 20px;
-  }
-  
-  .form-control {
+}
+
+.form-control {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 16px;
-  }
-  
-  .form-control:focus {
+}
+
+.form-control:focus {
     border-color: #007bff;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 123, 255, 0.6);
     outline: none;
-  }
-  
-  /* Button Styling */
-  .btn-custom {
+}
+
+/* Button Styling */
+.btn-custom {
     background-color: #007bff;
     color: white;
     border: none;
@@ -48,55 +52,79 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-  }
-  
-  .btn-custom:hover {
+}
+
+.btn-custom:hover {
     background-color: #0056b3;
-  }
-  
-  /* Contact Info Styling */
-  .contact-info {
+}
+
+.customer-type-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.customer-type-buttons .btn {
+    margin: 0 5px; /* 5px margin on left and right for spacing */
+    padding: 10px 20px;
+    border: 1px solid transparent; /* Add border to maintain the shape when color changes */
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.customer-type-buttons .btn-primary {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.customer-type-buttons .btn-default {
+    background-color: #fff;
+    color: #333;
+    border-color: #ccc;
+}
+
+/* Contact Info Styling */
+.contact-info {
     padding: 20px;
     font-size: 16px;
-  }
-  
-  .contact-item {
+}
+
+.contact-item {
     margin-bottom: 20px;
-  }
-  
-  .contact-item i {
+}
+
+.contact-item i {
     margin-right: 10px;
     color: #007bff;
-  }
-  
-  /* Social Icons Styling */
-  .social ul {
+}
+
+/* Social Icons Styling */
+.social ul {
     list-style-type: none;
     padding: 0;
     text-align: center;
-  }
-  
-  .social ul li {
+}
+
+.social ul li {
     display: inline;
     margin: 0 10px;
-  }
-  
-  .social ul li a {
+}
+
+.social ul li a {
     color: #666;
     font-size: 24px;
     transition: color 0.3s;
-  }
-  
-  .social ul li a:hover {
+}
+
+.social ul li a:hover {
     color: #007bff;
-  }
-  
-  /* Footer Styling */
-  #footer {
+}
+
+/* Footer Styling */
+#footer {
     background-color: #f8f9fa;
     padding: 20px 0;
     text-align: center;
     font-size: 14px;
     color: #666;
-  }
-  
+}
