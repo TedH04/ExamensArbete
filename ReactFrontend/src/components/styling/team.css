@@ -1,29 +1,12 @@
-/* #team {
-    padding: 100px 0;
-  }
-  #team h4 {
-    margin: 5px 0;
-  }
-  #team .team-img {
-    width: 240px;
-  }
-  #team .thumbnail {
-    background: transparent;
-    border: 0;
-  }
-  #team .thumbnail .caption {
-    padding: 10px 0 0;
-    color: #888;
-  }
-   */
 
-/* team.css */
 
 #team {
     background-color: #f8f8f8;
     padding: 60px 0;
-    text-align: center; /* Center aligning everything within #team */
-    overflow: hidden; /* Prevents floating elements from affecting layout */
+    padding-top: 85px;
+    margin-top: -70px;
+    text-align: center;
+    overflow: hidden;
   }
   
   #team .container {

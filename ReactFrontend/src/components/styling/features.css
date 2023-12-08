@@ -1,5 +1,7 @@
 #features {
     background: #f6f6f6;
+    padding-top: 70px; /* Adjust this value based on the actual height of your navbar */
+    margin-top: -70px;
   }
   #features i.fa {
     font-size: 38px;

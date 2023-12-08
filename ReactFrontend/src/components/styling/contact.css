@@ -99,32 +99,41 @@
 }
 
 /* Social Icons Styling */
-.social ul {
-    list-style-type: none;
-    padding: 0;
-    text-align: center;
-}
-
-.social ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-.social ul li a {
-    color: #666;
-    font-size: 24px;
-    transition: color 0.3s;
-}
-
-.social ul li a:hover {
-    color: #007bff;
-}
-
-/* Footer Styling */
-#footer {
+/* Center the contact info */
+.contact-info {
+    text-align: center; /* Center text for contact info */
+  }
+  
+  .contact-item {
+    display: inline-block; /* Make contact items inline-blocks to center text within them */
+    margin: 0 auto; /* Center the contact-item if it's not inside a flex container */
+    width: 100%; /* Make it full width to center the icons with the text */
+  }
+  
+  /* Center the footer */
+  #footer {
     background-color: #f8f9fa;
     padding: 20px 0;
-    text-align: center;
-    font-size: 14px;
-    color: #666;
-}
+    text-align: center; /* Center text in the footer */
+  }
+  
+  /* If the footer has a container inside it, center that container too */
+  #footer .container {
+    text-align: center; /* Center text for containers within the footer */
+    display: flex; /* Use flexbox for centering if there are multiple elements */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+  }
+  
+  /* Center social media icons */
+  .social ul {
+    margin: 0 auto; /* Center the list if it's not inside a flex container */
+    padding: 0;
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: center; /* Center the list items */
+  }
+  
+  .social ul li {
+    margin: 0 10px; /* Provide some space between icons */
+  }
+  

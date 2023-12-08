@@ -1,15 +1,21 @@
 #about {
     padding: 100px 0;
+    text-align: center; /* Center align the text for smaller components */
   }
+  
   #about h3 {
     font-size: 22px;
-    margin: 0 0 20px;
+    margin: 0 auto 20px; /* Centering the header */
   }
+  
   #about h2 {
     position: relative;
     margin-bottom: 15px;
     padding-bottom: 15px;
+    display: inline-block; /* Make h2 inline-block to center it */
+    text-align: center; /* Center the text */
   }
+  
   #about h2::after {
     position: absolute;
     content: "";
@@ -17,14 +23,17 @@
     height: 4px;
     width: 60px;
     bottom: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Center the pseudo-element */
   }
+  
   #about .about-text li {
     margin-bottom: 6px;
     margin-left: 6px;
     list-style: none;
     padding: 0;
   }
+  
   #about .about-text li:before {
     content: "\f00c";
     font-family: "FontAwesome";
@@ -33,14 +42,52 @@
     font-weight: 300;
     padding-right: 8px;
   }
+  
   #about img {
     width: 520px;
     margin-top: 10px;
     background: #fff;
     border-right: 0;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.06);
+    display: block; /* Make image a block to apply margin */
+    margin-left: auto; /* Center the image */
+    margin-right: auto;
   }
+  
   #about p {
     line-height: 24px;
     margin: 30px 0;
   }
+  
+  /* Centering the .container and its contents */
+  #about .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center flex items horizontally */
+    align-items: center; /* Align flex items vertically */
+    margin: 0 auto; /* Center the container */
+  }
+  
+  /* Specific centering for the text part of the about section */
+  #about .about-text {
+    max-width: 600px; /* Set a max-width for the text container */
+    margin: 0 auto; /* Center the text container */
+    text-align: left; /* Align the text to the left within the container */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 767px) {
+    #about .container {
+      flex-direction: column;
+    }
+  
+    #about img {
+      width: 100%; /* Full width on smaller screens */
+      margin-top: 20px; /* Adjust top margin on smaller screens */
+    }
+  
+    #about .about-text {
+      max-width: 100%; /* Allow text container to fill the width on smaller screens */
+    }
+  }
+  

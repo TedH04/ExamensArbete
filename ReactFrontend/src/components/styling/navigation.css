@@ -1,132 +1,84 @@
-#menu {
-    padding: 15px;
-    transition: all 0.8s;
-  }
-  #menu.navbar-default {
-    background-color: #fff;
-    border-color: rgba(231, 231, 231, 0);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-  }
-  #menu a.navbar-brand {
-    font-family: "Raleway", sans-serif;
+/* Ensuring the navbar itself has minimal padding */
+.navbar.navbar-default,
+.navbar.navbar-light {
+  padding-top: 0 !important; /* Eliminate top padding */
+  padding-bottom: 0 !important; /* Eliminate bottom padding */
+}
+
+/* Reducing the padding for brand and links to make navbar even slimmer */
+.navbar.navbar-default .navbar-brand,
+.navbar.navbar-light .navbar-brand {
+  padding-top: 0 !important; /* Eliminate top padding */
+  padding-bottom: 0 !important; /* Eliminate bottom padding */
+  margin-top: 0 !important; /* Adjust top margin if necessary */
+  margin-bottom: 0 !important; /* Adjust bottom margin if necessary */
+}
+
+.navbar.navbar-default .navbar-nav .nav-link,
+.navbar.navbar-light .navbar-nav .nav-link {
+  padding-top: 0 !important; /* Eliminate top padding */
+  padding-bottom: 0 !important; /* Eliminate bottom padding */
+  margin-top: 0 !important; /* Adjust top margin if necessary */
+  margin-bottom: 0 !important; /* Adjust bottom margin if necessary */
+}
+
+/* Adjusting toggle for smaller navbar */
+.navbar.navbar-default .navbar-toggler,
+.navbar.navbar-light .navbar-toggler {
+  padding: .25rem .5rem; /* Keep padding small for the toggle button */
+}
+  
+  /* Brand logo styling */
+  .navbar-brand {
+    font-family: 'Raleway', sans-serif;
     font-size: 24px;
     font-weight: 700;
     color: #333;
     text-transform: uppercase;
   }
-  #menu.navbar-default .navbar-nav > li > a {
-    font-family: "Lato", sans-serif;
+  
+  /* Link styling */
+  .nav-link {
+    font-family: 'Lato', sans-serif;
     text-transform: uppercase;
     color: #555;
     font-size: 15px;
     font-weight: 400;
-    padding: 8px 2px;
-    border-radius: 0;
-    margin: 9px 20px 0;
+    padding: 10px 15px; /* Adjusted spacing around links for slimmer navbar */
   }
-  #menu.navbar-default .navbar-nav > li > a:after {
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: -1px;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%);
-    content: "";
-    transition: width 0.2s;
+  
+  /* Hover effect for links */
+  .nav-link:hover {
+    color: #5ca9fb; /* Highlight color on hover */
   }
-  #menu.navbar-default .navbar-nav > li > a:hover:after {
-    width: 100%;
+  
+  /* Active link styling */
+  .navbar .navbar-nav .nav-link.active,
+  .navbar .navbar-nav .nav-link:focus {
+    color: #6372ff; /* Active link color */
   }
-  .navbar-default .navbar-nav > .active > a,
-  .navbar-default .navbar-nav > .active > a:hover,
-  .navbar-default .navbar-nav > .active > a:focus {
-    background-color: transparent;
+  
+  /* Navbar toggler styling */
+  .navbar-toggler {
+    border: none;
   }
-  .navbar-default .navbar-nav > .active > a:after,
-  .navbar-default .navbar-nav > .active > a:hover:after,
-  .navbar-default .navbar-nav > .active > a:focus:after {
-    display: block !important;
-    position: absolute !important;
-    left: 0 !important;
-    bottom: -1px !important;
-    width: 100% !important;
-    height: 2px !important;
-    background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%) !important;
-    content: "" !important;
-    transition: width 0.2s !important;
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   }
-  .navbar-toggle {
-    border-radius: 0;
+  
+  /* Modify the collapsed menu */
+  .navbar-collapse {
+    justify-content: flex-end; /* Aligns menu items to the right */
   }
-  .navbar-default .navbar-toggle:hover,
-  .navbar-default .navbar-toggle:focus {
-    background-color: #fff;
-    border-color: #608dfd;
+  
+  /* Override default Bootstrap styles */
+  .navbar-light .navbar-nav .nav-link {
+    color: #555;
   }
-  .navbar-default .navbar-toggle:hover > .icon-bar {
-    background-color: #608dfd;
+  
+  .navbar-light .navbar-nav .nav-link:hover,
+  .navbar-light .navbar-nav .nav-link:focus {
+    color: #5ca9fb;
   }
-  .section-title {
-    margin-bottom: 70px;
-  }
-  .section-title h2 {
-    position: relative;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-  }
-  .section-title h2::after {
-    position: absolute;
-    content: "";
-    background: linear-gradient(to right, #5ca9fb 0%, #6372ff 100%);
-    height: 4px;
-    width: 60px;
-    bottom: 0;
-    margin-left: -30px;
-    left: 50%;
-  }
-  .section-title p {
-    font-size: 18px;
-  }
-  .btn-custom {
-    font-family: "Raleway", sans-serif;
-    text-transform: uppercase;
-    color: #fff;
-    background-color: #5ca9fb;
-    background-image: linear-gradient(to right, #5ca9fb 0%, #6372ff 100%);
-    padding: 14px 34px;
-    letter-spacing: 1px;
-    margin: 0;
-    font-size: 15px;
-    font-weight: 500;
-    border-radius: 25px;
-    transition: all 0.5s linear;
-    border: 0;
-  }
-  .btn-custom:hover,
-  .btn-custom:focus,
-  .btn-custom.focus,
-  .btn-custom:active,
-  .btn-custom.active {
-    color: #fff;
-    background-image: none;
-    background-color: #6372ff;
-  }
-  .btn:active,
-  .btn.active {
-    background-image: none;
-    outline: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-  a:focus,
-  .btn:focus,
-  .btn:active:focus,
-  .btn.active:focus,
-  .btn.focus,
-  .btn:active.focus,
-  .btn.active.focus {
-    outline: none;
-    outline-offset: none;
-  }
+  
