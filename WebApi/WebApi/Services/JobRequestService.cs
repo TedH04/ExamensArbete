@@ -31,10 +31,16 @@ namespace WebApi.Services
                 throw new InvalidOperationException("User's email not found in the token.");
             }
 
+            var userName = httpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+            if (string.IsNullOrWhiteSpace(userName))
+            {
+                throw new InvalidOperationException("User's email not found in the token.");
+            }
+
             var jobRequest = new JobRequest
             {
                 Id = jobRequestDto.Id,
-                CustomerName = userEmail, // set from currently loggedin user (if logged in)
+                CustomerName = userName, // set name from currently loggedin user (if logged in)
                 CompanyName = jobRequestDto.CompanyName,
                 JobTitle = jobRequestDto.JobTitle,
                 JobDescription = jobRequestDto.JobDescription,
@@ -42,7 +48,7 @@ namespace WebApi.Services
                 JobCity = jobRequestDto.JobCity,
                 JobZip = jobRequestDto.JobZip,
                 OrgNumber = jobRequestDto.OrgNumber,
-                ContactEmail = userEmail, // set from currently loggedin user (if logged in)
+                ContactEmail = userEmail, // set email from currently loggedin user (if logged in)
                 IsCompany = jobRequestDto.IsCompany
             };
 

@@ -1,42 +1,56 @@
 #services {
     padding: 100px 0;
-    background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%);
+    background: linear-gradient(to bottom, #F3AA72 0%, #F6C199 100%);
     color: #fff;
+    border-bottom: 1px solid #0000002d;
   }
   #services .service-desc {
     margin: 10px 10px 20px;
   }
+  
   #services h2 {
-    color: #fff;
+    color: #805a3b; /* A warm brown that complements the background */
   }
+  
   #services .section-title h2::after {
     position: absolute;
     content: "";
-    background: rgba(255, 255, 255, 0.3);
+    background: #805a3b; /* A solid color for the underline that matches the h2 */
     height: 4px;
     width: 60px;
     bottom: 0;
     margin-left: -30px;
     left: 50%;
   }
+  
   #services i.fa {
     font-size: 42px;
     width: 120px;
     height: 120px;
     padding: 40px 0;
-    background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%);
+    background: #d7a86e; /* A lighter warm tone for the icons' background */
     border-radius: 50%;
     color: #fff;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.05);
   }
+  
   #services h3 {
     font-weight: 500;
     padding: 5px 0;
-    color: #fff;
+    color: #805a3b; /* A warm brown for the headers for consistency */
   }
+  
   #services p {
-    color: rgba(255, 255, 255, 0.75);
+    color: #5a4638; /* A darker brown for text for better readability */
   }
+  
   #services .service-desc {
     margin-bottom: 40px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 767px) {
+    #services .service-desc {
+      margin-bottom: 20px;
+    }
   }

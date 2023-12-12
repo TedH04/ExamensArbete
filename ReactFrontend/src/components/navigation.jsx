@@ -4,7 +4,7 @@ import './styling/navigation.css';
 
 export const Navigation = (props) => {
   return (
-    <Navbar bg="light" expand="lg" fixed="top">
+    <Navbar expand="lg" fixed="top">
       <Container>
         <Navbar.Brand href="#page-top">JLH EL</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -16,6 +16,7 @@ export const Navigation = (props) => {
             <Nav.Link href="#portfolio">Gallery</Nav.Link>
             <Nav.Link href="#testimonials">Testimonials</Nav.Link>
             <Nav.Link href="#team">Team</Nav.Link>
+            <Nav.Link href="#account">Account</Nav.Link>
             <Nav.Link href="#contact">Contact</Nav.Link>
           </Nav>
         </Navbar.Collapse>

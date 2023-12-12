@@ -57,11 +57,13 @@ namespace WebApi.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CustomerName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     JobTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     JobDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     JobAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     JobCity = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     JobZip = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OrgNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ContactEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsCompany = table.Column<bool>(type: "bit", nullable: false)
                 },

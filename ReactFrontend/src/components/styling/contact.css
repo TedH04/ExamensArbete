@@ -6,6 +6,7 @@
     max-width: 1200px;
     margin: 0 auto; /* Center the container */
     padding: 15px;
+    scroll-margin-top: 50px;
   }
   
 
@@ -45,17 +46,31 @@
 
 /* Button Styling */
 .btn-custom {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+    padding: 12px 30px; /* Size of the button */
+    background-color: #5ca9fb; /* Primary color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 25px; /* Rounded corners */
+    font-size: 16px; /* Size of the text */
+    font-weight: bold; /* Font weight of the text */
+    letter-spacing: 1px; /* Spacing between letters */
+    transition: background-color 0.3s ease; /* Transition for a smooth color change */
+    outline: none; /* Remove the outline */
+    cursor: pointer; /* Cursor to indicate it's clickable */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
 }
 
 .btn-custom:hover {
-    background-color: #0056b3;
+    background-color: #487fcb; /* Slightly darker color on hover */
+}
+
+.btn-custom:active {
+    background-color: #3a65a0; /* Even darker color when the button is clicked */
+    box-shadow: none; /* Remove the shadow when clicked */
+}
+
+.btn-custom:focus {
+    outline: none; /* Remove the outline when focused (for accessibility, consider keeping it or adding a custom style) */
 }
 
 .customer-type-buttons {

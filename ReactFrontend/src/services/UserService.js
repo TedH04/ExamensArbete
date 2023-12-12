@@ -1,16 +1,27 @@
-const GetLoginAsync = async () => {
+export const GetLoginAsync = async (email, password) => {
   try {
     const res = await fetch('https://localhost:7215/User/login', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
     })
-    const data = await res.json()
-    return data
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`)
+    }
+
+    // Assuming the response is just a JWT string
+    const jwtToken = await res.text()
+    return jwtToken // Return the JWT token
   } catch (err) {
-    console.error(err)
+    console.error('Login failed:', err)
+    throw err
   }
 }
 
-const GetRegisterAsync = async () => {
+export const GetRegisterAsync = async () => {
   try {
     const res = await fetch('https://localhost:7215/User/register', {
       method: 'POST',
@@ -21,7 +32,7 @@ const GetRegisterAsync = async () => {
     console.error(err)
   }
 }
-const GetAllUsersAsync = async () => {
+export const GetAllUsersAsync = async () => {
   try {
     const res = await fetch('https://localhost:7215/User/GetAllUsers', {
       method: 'GET',

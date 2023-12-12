@@ -1,5 +1,7 @@
 #portfolio {
     padding: 100px 0;
+    background: linear-gradient(to bottom, #F6C199 0%, #F9D9C1 100%);
+    border-bottom: 1px solid #0000002d;
   }
   .portfolio-item {
     margin: 1px -15px 0 -14px;

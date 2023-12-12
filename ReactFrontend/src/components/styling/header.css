@@ -4,7 +4,7 @@
     justify-content: center; /* Centers horizontally within the flex container */
     height: 100vh; /* Sets the height of the intro to be full viewport height */
     text-align: center; /* Centers the text within the content area */
-    background: #e5e5e5; /* Sets the background color */
+    background: #e5e5e5 url('../../../public/img/headerBG.png') no-repeat center center;
     position: relative; /* Needed for absolute positioning of child elements */
   }
   
@@ -22,13 +22,14 @@
   
   .intro h1 {
     font-family: "Raleway", sans-serif;
-    color: #fff;
-    font-size: 82px; /* Adjust size as needed */
+    color: #ffd700; /* Gold color for heading to stand out on a darker background */
+    font-size: 82px;
     font-weight: 700;
     text-transform: uppercase;
     margin: 0;
-    position: relative; /* Ensures ::after pseudo-element is positioned relative to this */
-    padding: 0;
+    position: relative;
+    /* Add text shadow for better readability */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Horizontal, vertical offset and blur */
   }
   
   .intro h1 span {
@@ -36,11 +37,13 @@
   }
   
   .intro p {
-    color: #fff;
+    color: #ffffff; /* Keep the paragraph white for contrast */
     font-size: 22px;
     font-weight: 300;
     margin: 0;
     padding: 0;
+    /* Add text shadow for better readability */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   }
   
   .intro .container {
@@ -66,7 +69,13 @@
   /* This ensures the button is centered beneath the text */
   .btn-custom.btn-lg.page-scroll {
     margin-top: 20px; /* Adds space above the button */
-    /* other styles... */
+    color: #ffffff; /* Keep the paragraph white for contrast */
+    font-size: 22px;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    /* Add text shadow for better readability */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   }
   
   /* Make sure the button has margin if not using flexbox */

@@ -166,7 +166,7 @@ export const Contact = (props) => {
             </div>
             <form name="sentMessage" validate onSubmit={handleSubmit}>
               {renderFormFields()}
-              <button type="submit" className="btn btn-custom btn-lg">
+              <button type="submit" className="btn-custom btn-lg">
                 Skicka Förfrågan
               </button>
             </form>

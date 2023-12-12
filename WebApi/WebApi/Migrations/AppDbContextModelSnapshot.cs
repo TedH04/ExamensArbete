@@ -163,6 +163,9 @@ namespace WebApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ContactEmail")
                         .HasColumnType("nvarchar(max)");
 
@@ -185,6 +188,9 @@ namespace WebApi.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("JobZip")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OrgNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

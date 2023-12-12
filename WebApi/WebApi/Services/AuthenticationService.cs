@@ -48,16 +48,16 @@ public class AuthenticationService : IAuthenticationService
         await _context.Users.AddAsync(user);
         await _context.SaveChangesAsync();
 
-        return await Login(new LoginRequest { Username = request.Email, Password = request.Password });
+        return await Login(new LoginRequest { Email = request.Email, Password = request.Password });
     }
 
     public async Task<string> Login(LoginRequest request)
     {
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == request.Username || u.Email == request.Username);
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == request.Email || u.Email == request.Email);
 
         if (user == null || !VerifyPasswordHash(request.Password, user.PasswordHash))
         {
-            throw new ArgumentException($"Unable to authenticate user {request.Username}");
+            throw new ArgumentException($"Unable to authenticate user {request.Email}");
         }
 
         // Retrieve roles for the user
