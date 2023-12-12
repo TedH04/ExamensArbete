@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import "./styling/account.css";
 import { UserContext } from '../contexts/UserContext';
+import { UserPage } from './userPage';
 
 export const Account = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -53,10 +54,13 @@ export const Account = () => {
 
   if (currentUser && currentUser.name) {
     return (
-      <div id='account' className="account-container">
-        <h2>Welcome, {currentUser.name}</h2>
-        <button onClick={logout} className="form-button">Logout</button>
-      </div>
+      <>
+        <UserPage />
+        <div id='account' className="account-container">
+          <h2>Welcome, {currentUser.name}</h2>
+          <button onClick={logout} className="form-button">Logout</button>
+        </div>
+      </>
     );
   }
 

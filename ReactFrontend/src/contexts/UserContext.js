@@ -17,12 +17,27 @@ export const UserContextProvider = ({ children }) => {
     const token = localStorage.getItem('token')
     if (token) {
       try {
-        const decodedToken = jwt_decode(token) // Make sure jwt_decode is correctly imported
+        const decodedToken = jwt_decode(token)
+
+        // Adjust these keys based on your JWT structure
+        const userEmail =
+          decodedToken[
+            'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'
+          ]
         const userName =
           decodedToken[
             'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
           ]
-        setCurrentUser({ name: userName }) // Set the user with the decoded name
+        const userRole =
+          decodedToken[
+            'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+          ]
+
+        setCurrentUser({
+          name: userName,
+          email: userEmail,
+          userrole: userRole,
+        })
       } catch (error) {
         console.error('Error decoding token:', error)
       }

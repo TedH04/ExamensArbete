@@ -164,7 +164,7 @@ export const Contact = (props) => {
                 Företag
               </button>
             </div>
-            <form name="sentMessage" validate onSubmit={handleSubmit}>
+            <form name="sentMessage" onSubmit={handleSubmit}>
               {renderFormFields()}
               <button type="submit" className="btn-custom btn-lg">
                 Skicka Förfrågan

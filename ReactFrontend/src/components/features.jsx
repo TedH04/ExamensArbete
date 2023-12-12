@@ -1,6 +1,5 @@
 import React from "react";
 import './styling/features.css'
-
 export const Features = (props) => {
   return (
     <div id="features" className="text-center">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// Import all your components
 import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
 import { Features } from "./components/features";
@@ -9,11 +10,10 @@ import { Testimonials } from "./components/testimonials";
 import { Team } from "./components/Team";
 import { Contact } from "./components/contact";
 import { UserContextProvider } from './contexts/UserContext';
+import {JobContextProvider} from './contexts/JobContext';
 import { Account } from "./components/account";
 import JsonData from "./data/data.json";
 import "./App.css";
-
-
 
 const App = () => {
   const [landingPageData, setLandingPageData] = useState({});
@@ -23,7 +23,7 @@ const App = () => {
 
   return (
     <UserContextProvider>
-      <div>
+        <JobContextProvider>
         <Navigation />
         <Header data={landingPageData.Header} />
         <Features data={landingPageData.Features} />
@@ -34,8 +34,8 @@ const App = () => {
         <Team data={landingPageData.Team} />
         <Account data={landingPageData.Account}/>
         <Contact data={landingPageData.Contact} />
-      </div>
-    </UserContextProvider>
+        </JobContextProvider>
+      </UserContextProvider>
   );
 };
 
