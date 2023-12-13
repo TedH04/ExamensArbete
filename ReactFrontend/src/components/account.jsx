@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import "./styling/account.css";
 import { UserContext } from '../contexts/UserContext';
 import { UserPage } from './userPage';
+import { GetRegisterAsync } from '../services/UserService'; // Ensure this is the correct import path
 
 export const Account = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -9,48 +10,51 @@ export const Account = () => {
     const [loginPassword, setLoginPassword] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [retypePassword, setRetypePassword] = useState('');
-    const { currentUser, login, register, logout  } = useContext(UserContext);
+    const { currentUser, login, logout } = useContext(UserContext);
 
-  useEffect(() => {
-    if (currentUser && currentUser.name) {
-        setName(currentUser.name);
-    }
-  }, [currentUser]);
+    useEffect(() => {
+        if (currentUser && currentUser.name) {
+            setName(currentUser.name);
+        }
+    }, [currentUser]);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      await login(loginEmail, loginPassword);
-      //alert("Login successful!");
-      //alert(name + " is logged in");
-        window.location.reload();
-      // If you have redirect logic, it should go here
-    } catch (error) {
-      alert("Login failed: " + error.message);
-    }
-  };
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            await login(loginEmail, loginPassword);
+            window.location.reload();
+        } catch (error) {
+            alert("Login failed: " + error.message);
+        }
+    };
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
-
-    if (password !== retypePassword) {
-      alert("Passwords do not match.");
-      return;
-    }
-
-    try {
-      // Call the register function from context
-      await register(name, email, password);
-      // Handle successful registration
-      alert("Registration successful!");
-      setIsLogin(true); // Switch to login form after successful registration
-    } catch (error) {
-      // Handle registration error
-      alert("Registration failed: " + error.message);
-    }
-  };
+    const handleRegister = async (e) => {
+      e.preventDefault();
+    
+      if (password !== retypePassword) {
+        alert("Passwords do not match.");
+        return;
+      }
+    
+      try {
+        const userData = {
+          username: name,
+          email: email,
+          password: password,
+          phoneNumber: phoneNumber,
+        };
+    
+        const jwtToken = await GetRegisterAsync(userData);
+        console.log("Registration successful, token:", jwtToken);
+        
+        setIsLogin(true);
+      } catch (error) {
+        alert("Registration failed: " + error.message);
+      }
+    };
 
   if (currentUser && currentUser.name) {
     return (
@@ -67,9 +71,9 @@ export const Account = () => {
   return (
     <div id='account' className="account-container">
       {isLogin ? (
-        // Login Form
+        /* login formuläret */
         <form className="account-form" onSubmit={handleLogin}>
-        <h2 className="form-title">Login</h2>
+        <h2 className="form-title">Logga in</h2>
         <div className="form-group">
           <label htmlFor="login-email" className="form-label">Email:</label>
           <input
@@ -92,12 +96,13 @@ export const Account = () => {
             required
           />
         </div>
-        <button type="submit" className="form-button">Login</button>
-        <button type="button" className="form-toggle" onClick={() => setIsLogin(false)}>Need an account? Register</button>
+        <button type="submit" className="form-button">Logga in</button>
+        <button type="button" className="form-toggle" onClick={() => setIsLogin(false)}>Inget konto än? Registrera</button>
       </form>
       ) : (
+        /* registrerings formuläret */
         <form className="account-form" onSubmit={handleRegister}>
-          <h2 className="form-title">Register</h2>
+          <h2 className="form-title">Registrering</h2>
           <div className="form-group">
             <label htmlFor="register-name" className="form-label">Name:</label>
             <input
@@ -117,6 +122,17 @@ export const Account = () => {
               className="form-input"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="register-number" className="form-label">Telefonnummer:</label>
+            <input
+              type="phonenumber"
+              id="register-number"
+              className="form-input"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
               required
             />
           </div>
@@ -142,8 +158,8 @@ export const Account = () => {
               required
             />
           </div>
-          <button type="submit" className="form-button">Register</button>
-          <button type="button" className="form-toggle" onClick={() => setIsLogin(true)}>Already have an account? Login</button>
+          <button type="submit" className="form-button">Registrera</button>
+          <button type="button" className="form-toggle" onClick={() => setIsLogin(true)}>Har du redan ett konto? Logga in</button>
         </form>
       )}
     </div>

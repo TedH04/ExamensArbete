@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// Import all your components
 import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
 import { Features } from "./components/features";

@@ -70,13 +70,15 @@ export const UserContextProvider = ({ children }) => {
     }
   }
 
-  const register = async () => {
+  const register = async (userData) => {
     try {
-      const user = await GetRegisterAsync()
-      setCurrentUser(user)
+      const response = await GetRegisterAsync(userData)
+      if (response) {
+        setCurrentUser(response)
+      }
     } catch (err) {
-      setError(err)
-      console.error(err)
+      setError(err.message || 'An error occurred during registration')
+      throw err
     }
   }
 

@@ -1,61 +1,53 @@
-/* Ensuring the navbar itself has minimal padding */
 .navbar.navbar-default,
 .navbar.navbar-light {
-  padding-top: 0 !important; /* Eliminate top padding */
-  padding-bottom: 0 !important; /* Eliminate bottom padding */
-  background-color: rgba(43, 21, 10, 0.8); /* Warm brown with transparency for blending */
+  padding-top: 0 !important; 
+  padding-bottom: 0 !important; 
+  background-color: rgba(43, 21, 10, 0.8); 
 }
 
-/* Reducing the padding for brand and links to keep navbar slim */
 .navbar.navbar-default .navbar-brand,
 .navbar.navbar-light .navbar-brand {
-  padding-top: 0 !important; /* Eliminate top padding */
-  padding-bottom: 0 !important; /* Eliminate bottom padding */
-  margin-top: 0 !important; /* Adjust top margin if necessary */
-  margin-bottom: 0 !important; /* Adjust bottom margin if necessary */
-  color: #f0e6d2; /* Light color for brand to stand out */
+  padding-top: 0 !important; 
+  padding-bottom: 0 !important; 
+  margin-top: 0 !important; 
+  margin-bottom: 0 !important; 
+  color: #f0e6d2; 
 }
 
 .navbar.navbar-default .navbar-nav .nav-link,
 .navbar.navbar-light .navbar-nav .nav-link {
-  padding-top: 0 !important; /* Eliminate top padding */
-  padding-bottom: 0 !important; /* Eliminate bottom padding */
-  margin-top: 0 !important; /* Adjust top margin if necessary */
-  margin-bottom: 0 !important; /* Adjust bottom margin if necessary */
-  color: #f0e6d2; /* Light color for links to stand out */
-  transition: color 0.3s ease-in-out; /* Smooth transition for hover effects */
+  padding-top: 0 !important; 
+  padding-bottom: 0 !important; 
+  margin-top: 0 !important; 
+  margin-bottom: 0 !important; 
+  color: #f0e6d2; 
+  transition: color 0.3s ease-in-out; 
 }
 
-/* Hover effect for links */
 .navbar.navbar-default .navbar-nav .nav-link:hover,
 .navbar.navbar-light .navbar-nav .nav-link:hover {
-  color: #c59b6d; /* Slightly darker shade for hover */
+  color: #c59b6d; 
 }
 
-/* Active link styling to indicate the current section */
 .navbar .navbar-nav .nav-link.active,
 .navbar .navbar-nav .nav-link:focus {
-  color: #ffe6cc; /* Lighter shade for active link */
-  background-color: rgba(67, 34, 15, 0.5); /* Subtle background for active link */
+  color: #ffe6cc; 
+  background-color: rgba(67, 34, 15, 0.5); 
 }
 
-/* Toggler icon styling */
 .navbar-toggler {
   border: none;
 }
 
-
-/* Modify the collapsed menu */
 .navbar-collapse {
-  justify-content: flex-end; /* Aligns menu items to the right */
+  justify-content: flex-end; 
 }
 
-/* Override default Bootstrap styles */
 .navbar-light .navbar-nav .nav-link {
-  color: #f0e6d2; /* Light color for links */
+  color: #f0e6d2; 
 }
 
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link:focus {
-  color: #c59b6d; /* Slightly darker shade for hover */
+  color: #c59b6d; 
 }

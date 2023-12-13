@@ -1,32 +1,31 @@
 #features {
-    background: linear-gradient(to bottom, #FD913E 0%, #F19E5F 100%); /* A warm light background that matches the header */
-    padding-top: 70px; /* Keep existing padding */
-    margin-top: -70px; /* Keep existing negative margin to offset the navbar height */
-    border-bottom: 1px solid #0000002d;
-  }
-  
-  #features .section-title h2 {
-    color: #333; /* Dark color for contrast */
-  }
-  
-  #features i.fa {
-    font-size: 38px;
-    margin-bottom: 20px;
-    transition: all 0.5s;
-    color: #fff;
-    width: 100px;
-    height: 100px;
-    padding: 30px 0;
-    border-radius: 50%;
-    background: #b35900; /* A warm orange color that complements the header */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  }
-  
-  #features h3 {
-    color: #333; /* Dark color for the titles for better readability */
-  }
-  
-  #features p {
-    color: #666; /* A slightly lighter color for the text to not overpower the titles */
-  }
-  
+  background: linear-gradient(to bottom, #FD913E 0%, #F19E5F 100%); 
+  padding-top: 70px; 
+  margin-top: -70px; 
+  border-bottom: 1px solid #0000002d;
+}
+
+#features .section-title h2 {
+  color: #333; 
+}
+
+#features i.fa {
+  font-size: 38px;
+  margin-bottom: 20px;
+  transition: all 0.5s;
+  color: #fff;
+  width: 100px;
+  height: 100px;
+  padding: 30px 0;
+  border-radius: 50%;
+  background: #b35900; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+#features h3 {
+  color: #333; 
+}
+
+#features p {
+  color: #666; 
+}

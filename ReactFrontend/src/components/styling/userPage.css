@@ -71,12 +71,12 @@
 
 .job-request-details {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Adjust number of columns as needed */
-    gap: 10px; /* Spacing between columns */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px; 
     padding: 15px;
     border-top: 1px solid #eeeeee;
     background-color: #fafafa;
-    font-size: 0.9rem; /* Adjust the font size as needed */
+    font-size: 0.9rem; 
   }
 
 .job-request-item.active .job-request-details {
@@ -87,27 +87,31 @@
     margin: 5px 0;
     color: #555555;
   }
-  
-  /* New CSS classes for the details. Each class corresponds to a piece of information. */
+
   .jobDescription {
-    grid-column: 1 / -1; /* Makes the description span all columns */
-    font-weight: bold; /* Make description text bold */
+    grid-column: 1 / -1; 
+    font-weight: bold; 
   }
-  
+
   .jobAddress,
   .jobCity,
   .jobZip,
   .jobEmail {
-    /* These will be styled as columns under the description */
-    padding: 8px; /* Padding for each item */
-    background-color: #ffffff; /* Background color for the detail items */
-    border: 1px solid #ddd; /* Border around the detail items */
+
+    padding: 8px; 
+    background-color: #ffffff; 
+    border: 1px solid #ddd; 
   }
-  
-  /* Style for the company name and organization number when isCompany is true */
+
   .companyDetails {
-    grid-column: 1 / -1; /* Span across all columns */
-    background-color: #f0f0f0; /* Different background to stand out */
+    grid-column: 1 / -1; 
+    background-color: #f0f0f0; 
     padding: 8px;
     border: 1px solid #ddd;
+  }
+
+  .delete-icon {
+    color: #ff4500;
+    cursor: pointer;
+    margin-left: 10px;
   }

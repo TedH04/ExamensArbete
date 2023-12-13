@@ -1,81 +1,80 @@
 #team {
-    background: linear-gradient(to bottom, #FBE6D5 0%, white 100%);
-    padding: 60px 0;
-    padding-top: 85px;
-    margin-top: -70px;
-    text-align: center;
-    overflow: hidden;
-    border-bottom: 1px solid #0000002d;
-    border-top: 1px solid #0000002d;
-  }
-  
-  #team .container {
-    max-width: 1200px;
-    margin: 0 auto; /* Ensures container is centered */
-    padding: 0 15px;
-    text-align: center; /* Center text for the container */
-  }
-  
-  #team .section-title {
-    margin: 0 auto; /* Centering the section title */
-    padding: 0; /* Reset any padding that might affect centering */
-  }
-  
-  #team .section-title h2 {
-    color: #333;
-    font-size: 30px;
-    margin-bottom: 20px;
-  }
-  
-  #team .section-title p {
-    font-size: 16px;
-    color: #666;
-    margin: 0 auto 50px; /* Centering and adding space below the paragraph */
-    max-width: 80%; /* Ensures the text does not get too wide */
-  }
-  
+  background: linear-gradient(to bottom, #FBE6D5 0%, white 100%);
+  padding: 60px 0;
+  padding-top: 85px;
+  margin-top: -70px;
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid #0000002d;
+  border-top: 1px solid #0000002d;
+}
+
+#team .container {
+  max-width: 1200px;
+  margin: 0 auto; 
+  padding: 0 15px;
+  text-align: center; 
+}
+
+#team .section-title {
+  margin: 0 auto; 
+  padding: 0; 
+}
+
+#team .section-title h2 {
+  color: #333;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+#team .section-title p {
+  font-size: 16px;
+  color: #666;
+  margin: 0 auto 50px; 
+  max-width: 80%; 
+}
+
+#row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  gap: 30px; 
+}
+
+#team .team {
+  flex: 0 1 calc(50% - 30px); 
+  margin-bottom: 30px;
+}
+
+#team .thumbnail {
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+#team .team-img {
+  width: 100%;
+  height: auto;
+  border-bottom: 5px solid #f1f1f1;
+}
+
+#team .caption {
+  padding: 20px;
+}
+
+#team .caption h4,
+#team .caption p {
+  max-width: 100%; 
+  overflow-wrap: break-word; 
+}
+
+@media (max-width: 767px) {
   #row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Centers the flex items horizontally */
-    gap: 30px; /* Gap between the items */
+    flex-direction: column;
   }
-  
+
   #team .team {
-    flex: 0 1 calc(50% - 30px); /* Each team item takes up half the row width minus the gap */
-    margin-bottom: 30px;
+    flex-basis: 100%; 
   }
-  
-  #team .thumbnail {
-    padding: 0;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-  }
-  
-  #team .team-img {
-    width: 100%;
-    height: auto;
-    border-bottom: 5px solid #f1f1f1;
-  }
-  
-  #team .caption {
-    padding: 20px;
-  }
-  
-  #team .caption h4,
-  #team .caption p {
-    max-width: 100%; /* Prevents text from overflowing */
-    overflow-wrap: break-word; /* Breaks words that are too long to fit */
-  }
-  
-  @media (max-width: 767px) {
-    #row {
-      flex-direction: column;
-    }
-    
-    #team .team {
-      flex-basis: 100%; /* Each team item takes full width on small screens */
-    }
-  }
-  
+}

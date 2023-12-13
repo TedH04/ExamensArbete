@@ -1,86 +1,83 @@
 .intro {
-    display: flex; /* Establishes a flex container */
-    align-items: center; /* Centers vertically within the flex container */
-    justify-content: center; /* Centers horizontally within the flex container */
-    height: 100vh; /* Sets the height of the intro to be full viewport height */
-    text-align: center; /* Centers the text within the content area */
-    background: #e5e5e5 url('../../../public/img/headerBG.png') no-repeat center center;
-    position: relative; /* Needed for absolute positioning of child elements */
-  }
-  
-  .intro .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .intro h1 {
-    font-family: "Raleway", sans-serif;
-    color: #ffd700; /* Gold color for heading to stand out on a darker background */
-    font-size: 82px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin: 0;
-    position: relative;
-    /* Add text shadow for better readability */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Horizontal, vertical offset and blur */
-  }
-  
-  .intro h1 span {
-    color: #5ca9fb;
-  }
-  
-  .intro p {
-    color: #ffffff; /* Keep the paragraph white for contrast */
-    font-size: 22px;
-    font-weight: 300;
-    margin: 0;
-    padding: 0;
-    /* Add text shadow for better readability */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-  }
-  
-  .intro .container {
-    position: relative; /* Positions the container within the overlay */
-    z-index: 2; /* Ensures the container is above the overlay */
-  }
-  
-  .intro .row {
-    display: flex;
-    justify-content: center; /* This will center the .intro-text if .row is a flex container */
-  }
-  
-  .intro .intro-text {
-    padding: 0;
-    margin: 0; /* Removes margin for the intro text */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Aligns text blocks (h1, p, a) to the center */
-    justify-content: center;
-    height: 100%; /* Takes full height of its parent .overlay */
-  }
-  
-  /* This ensures the button is centered beneath the text */
-  .btn-custom.btn-lg.page-scroll {
-    margin-top: 20px; /* Adds space above the button */
-    color: #ffffff; /* Keep the paragraph white for contrast */
-    font-size: 22px;
-    font-weight: 300;
-    margin: 0;
-    padding: 0;
-    /* Add text shadow for better readability */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-  }
-  
-  /* Make sure the button has margin if not using flexbox */
-  .btn-custom.btn-lg.page-scroll {
-    display: inline-block;
-    margin: 20px auto; /* Auto margins on left and right for horizontal centering */
-  }
-  
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  height: 100vh; 
+  text-align: center; 
+  background: #e5e5e5 url('../../../public/img/headerBG.png') no-repeat center center;
+  position: relative; 
+}
+
+.intro .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro h1 {
+  font-family: "Raleway", sans-serif;
+  color: #ffd700; 
+  font-size: 82px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+  position: relative;
+
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); 
+}
+
+.intro h1 span {
+  color: #5ca9fb;
+}
+
+.intro p {
+  color: #ffffff; 
+  font-size: 22px;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.intro .container {
+  position: relative; 
+  z-index: 2; 
+}
+
+.intro .row {
+  display: flex;
+  justify-content: center; 
+}
+
+.intro .intro-text {
+  padding: 0;
+  margin: 0; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  height: 100%; 
+}
+
+.btn-custom.btn-lg.page-scroll {
+  margin-top: 20px; 
+  color: #ffffff; 
+  font-size: 22px;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.btn-custom.btn-lg.page-scroll {
+  display: inline-block;
+  margin: 20px auto; 
+}

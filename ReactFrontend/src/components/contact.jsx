@@ -31,7 +31,6 @@ export const Contact = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Construct the job request object
     const jobRequest = {
       customerName: state.name,
       companyName: state.customerType === "company" ? state.companyName : "",
@@ -48,15 +47,13 @@ export const Contact = (props) => {
     try {
       const result = await GetCreateJobRequestAsync(jobRequest);
       console.log('Job request created successfully:', result);
-      // Reset the form or handle success (e.g., show a success message)
+      
       setState(initialState);
     } catch (error) {
       console.error('Job request creation failed:', error);
-      // Handle the error (e.g., show an error message)
     }
   };
   const renderFormFields = () => {
-    // Common fields
     const fields = (
       <>
         <div className="form-group">
@@ -139,7 +136,6 @@ export const Contact = (props) => {
       </>
     );
 
-    // Additional fields for companies
     if (state.customerType === "company") {
       return (
         <>
@@ -262,7 +258,7 @@ export const Contact = (props) => {
       <div id="footer">
         <div className="container text-center">
           <p>
-            &copy; 2023 Design av Ted Hamrén. Design by{" "}
+            &copy; 2023 Design av Ted Hamrén.
           </p>
         </div>
       </div>
