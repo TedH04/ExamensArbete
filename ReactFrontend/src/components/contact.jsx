@@ -1,9 +1,11 @@
 import { useState } from "react";
 import React from "react";
 import "./styling/contact.css";
+import { GetCreateJobRequestAsync } from "../services/JobService"; // Adjust the import path as needed
 
 const initialState = {
-  customerType: "individual", // Initial customer type
+  customerType: "individual",
+  title: "",
   name: "",
   address: "",
   city: "",
@@ -26,9 +28,32 @@ export const Contact = (props) => {
     setState({ ...initialState, customerType: type });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(state);
+
+    // Construct the job request object
+    const jobRequest = {
+      customerName: state.name,
+      companyName: state.customerType === "company" ? state.companyName : "",
+      jobTitle: state.title,
+      jobDescription: state.description,
+      jobAddress: state.address,
+      jobCity: state.city,
+      jobZip: state.postalCode,
+      orgNumber: state.orgNumber,
+      contactEmail: state.email,
+      isCompany: state.customerType === "company",
+    };
+
+    try {
+      const result = await GetCreateJobRequestAsync(jobRequest);
+      console.log('Job request created successfully:', result);
+      // Reset the form or handle success (e.g., show a success message)
+      setState(initialState);
+    } catch (error) {
+      console.error('Job request creation failed:', error);
+      // Handle the error (e.g., show an error message)
+    }
   };
   const renderFormFields = () => {
     // Common fields
@@ -90,11 +115,22 @@ export const Contact = (props) => {
           />
         </div>
         <div className="form-group">
+          <input
+            type="title"
+            name="title"
+            className="form-control"
+            placeholder="Kortfattad titel: exempel (Behöver fler uttag i köket)"
+            value={state.title}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
           <textarea
             name="description"
             className="form-control"
             rows="4"
-            placeholder="Beskriv vad ni behöver hjälp med"
+            placeholder="Beskriv mer djupgående vad ni behöver hjälp med"
             value={state.description}
             onChange={handleChange}
             required
