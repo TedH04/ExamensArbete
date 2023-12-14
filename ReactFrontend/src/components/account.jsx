@@ -1,8 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import "./styling/account.css";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { UserContext } from '../contexts/UserContext';
 import { UserPage } from './userPage';
-import { GetRegisterAsync } from '../services/UserService'; // Ensure this is the correct import path
+import { GetRegisterAsync } from '../services/UserService';
 
 export const Account = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -15,6 +17,17 @@ export const Account = () => {
     const [retypePassword, setRetypePassword] = useState('');
     const { currentUser, login, logout } = useContext(UserContext);
 
+    const notify = (message) => toast.success(message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+
     useEffect(() => {
         if (currentUser && currentUser.name) {
             setName(currentUser.name);
@@ -25,7 +38,7 @@ export const Account = () => {
         e.preventDefault();
         try {
             await login(loginEmail, loginPassword);
-            window.location.reload();
+            notify("Login successful!");
         } catch (error) {
             alert("Login failed: " + error.message);
         }
@@ -49,7 +62,7 @@ export const Account = () => {
     
         const jwtToken = await GetRegisterAsync(userData);
         console.log("Registration successful, token:", jwtToken);
-        
+        alert("Välkommen till klubben!");
         setIsLogin(true);
       } catch (error) {
         alert("Registration failed: " + error.message);
@@ -162,6 +175,7 @@ export const Account = () => {
           <button type="button" className="form-toggle" onClick={() => setIsLogin(true)}>Har du redan ett konto? Logga in</button>
         </form>
       )}
+      <ToastContainer />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import {
   GetLoginAsync,
   GetRegisterAsync,
   GetAllUsersAsync,
-} from '../services/UserService' // Adjust the path as necessary
+} from '../services/UserService'
 
 export const UserContext = createContext()
 
@@ -19,7 +19,6 @@ export const UserContextProvider = ({ children }) => {
       try {
         const decodedToken = jwt_decode(token)
 
-        // Adjust these keys based on your JWT structure
         const userEmail =
           decodedToken[
             'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'
@@ -72,9 +71,11 @@ export const UserContextProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const response = await GetRegisterAsync(userData)
-      if (response) {
-        setCurrentUser(response)
+      const token = await GetRegisterAsync(userData)
+      if (token) {
+        const user = jwt_decode(token)
+        setCurrentUser(user)
+        localStorage.setItem('token', token)
       }
     } catch (err) {
       setError(err.message || 'An error occurred during registration')
