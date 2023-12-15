@@ -6,10 +6,9 @@ export const GetCreateJobRequestAsync = async (jobRequest) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // Include the Authorization header with the bearer token
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-        body: JSON.stringify(jobRequest), // Send the job request data as JSON
+        body: JSON.stringify(jobRequest),
       }
     )
 
@@ -21,7 +20,7 @@ export const GetCreateJobRequestAsync = async (jobRequest) => {
     return data
   } catch (err) {
     console.error('Failed to create job request:', err)
-    throw err // Re-throw the error so it can be handled by the caller
+    throw err
   }
 }
 
@@ -30,7 +29,7 @@ export const GetAllJobRequestsAsync = async () => {
     const res = await fetch('https://localhost:7215/Jobs/GetAllJobRequests', {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`, // Add this line if your endpoint requires an Auth header
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     })
     if (!res.ok) {
@@ -40,7 +39,7 @@ export const GetAllJobRequestsAsync = async () => {
     return data
   } catch (err) {
     console.error('Failed to get job requests:', err)
-    throw err // make sure to throw the error so it can be caught in calling function
+    throw err
   }
 }
 export const GetDeleteJobRequestAsync = async (index) => {

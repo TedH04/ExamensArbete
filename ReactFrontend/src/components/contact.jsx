@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from '../contexts/UserContext';
+import { toast, ToastContainer } from 'react-toastify';
 import React from "react";
 import "./styling/contact.css";
-import { GetCreateJobRequestAsync } from "../services/JobService"; // Adjust the import path as needed
+import { JobContext } from '../contexts/JobContext';
 
 const initialState = {
   customerType: "individual",
@@ -18,6 +20,12 @@ const initialState = {
 
 export const Contact = (props) => {
   const [state, setState] = useState(initialState);
+  const { createJobRequest } = useContext(JobContext);
+  const { currentUser } = useContext(UserContext);
+  if(currentUser){
+    initialState.name = currentUser.name;
+    initialState.email = currentUser.email;
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,6 +38,23 @@ export const Contact = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!currentUser) {
+      toast.error("Du måste vara inloggad för att skicka en jobförfrågan.");
+      return;
+    }
+
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    if (!emailRegex.test(state.email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
+    const postalCodeRegex = /^(s-|S-){0,1}[0-9]{3}\s?[0-9]{2}$/;
+    if (!postalCodeRegex.test(state.postalCode)) {
+      toast.error("Please enter a valid postal code.");
+      return;
+    }
 
     const jobRequest = {
       customerName: state.name,
@@ -45,12 +70,13 @@ export const Contact = (props) => {
     };
 
     try {
-      const result = await GetCreateJobRequestAsync(jobRequest);
-      console.log('Job request created successfully:', result);
-      
+      await createJobRequest(jobRequest);
+      console.log('Jobförfrågan skickad utan problem');
       setState(initialState);
+      toast.success("Jobförfrågan skickad!.");
     } catch (error) {
-      console.error('Job request creation failed:', error);
+      console.error('Fel med att skicka jobförfrågan:', error);
+      toast.error("Fel med att skicka jobförfrågan.");
     }
   };
   const renderFormFields = () => {
@@ -171,6 +197,7 @@ export const Contact = (props) => {
 
   return (
     <div>
+    <ToastContainer />
       <div id="contact">
         <div className="container">
           <div className="col-md-8">
@@ -235,18 +262,18 @@ export const Contact = (props) => {
               <div className="social">
                 <ul>
                   <li>
-                    <a href="https://www.facebook.com">
-                      <i className="fa fa-facebook"></i>
+                    <a href="https://www.facebook.com" aria-label="Facebook">
+                      <i className="fa fa-facebook" aria-hidden="true"></i>
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.twitter.com">
-                      <i className="fa fa-twitter"></i>
+                    <a href="https://www.twitter.com" aria-label="Twitter">
+                      <i className="fa fa-twitter" aria-hidden="true"></i>
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.youtube.com">
-                      <i className="fa fa-youtube"></i>
+                    <a href="https://www.youtube.com" aria-label="Youtube">
+                      <i className="fa fa-youtube" aria-hidden="true"></i>
                     </a>
                   </li>
                 </ul>

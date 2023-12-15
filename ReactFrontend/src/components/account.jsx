@@ -15,17 +15,27 @@ export const Account = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [retypePassword, setRetypePassword] = useState('');
-    const { currentUser, login, logout } = useContext(UserContext);
+    const { currentUser, login, logout, refreshUsers } = useContext(UserContext);
 
-    const notify = (message) => toast.success(message, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    const notify = (message, type) => {
+      const options = {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      };
+    
+      if (type === 'success') {
+        toast.success(message, options);
+      } else if (type === 'error') {
+        toast.error(message, options);
+      } else {
+        toast(message, options);
+      }
+    };
 
 
     useEffect(() => {
@@ -38,9 +48,9 @@ export const Account = () => {
         e.preventDefault();
         try {
             await login(loginEmail, loginPassword);
-            notify("Login successful!");
+            notify("Välkommen!", "success");
         } catch (error) {
-            alert("Login failed: " + error.message);
+          notify("Login failed: " + error.message, "error");
         }
     };
 
@@ -51,7 +61,8 @@ export const Account = () => {
         alert("Passwords do not match.");
         return;
       }
-    
+    else{
+
       try {
         const userData = {
           username: name,
@@ -59,20 +70,22 @@ export const Account = () => {
           password: password,
           phoneNumber: phoneNumber,
         };
-    
+        
         const jwtToken = await GetRegisterAsync(userData);
         console.log("Registration successful, token:", jwtToken);
-        alert("Välkommen till klubben!");
+        notify("Välkommen till klubben!", "success");
         setIsLogin(true);
       } catch (error) {
         alert("Registration failed: " + error.message);
       }
-    };
+    }
+  };
 
   if (currentUser && currentUser.name) {
     return (
       <>
         <UserPage />
+        <ToastContainer />
         <div id='account' className="account-container">
           <h2>Welcome, {currentUser.name}</h2>
           <button onClick={logout} className="form-button">Logout</button>
@@ -80,7 +93,7 @@ export const Account = () => {
       </>
     );
   }
-
+  
   return (
     <div id='account' className="account-container">
       {isLogin ? (
@@ -175,7 +188,6 @@ export const Account = () => {
           <button type="button" className="form-toggle" onClick={() => setIsLogin(true)}>Har du redan ett konto? Logga in</button>
         </form>
       )}
-      <ToastContainer />
     </div>
   );
 };

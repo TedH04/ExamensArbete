@@ -11,37 +11,31 @@ export const UserContext = createContext()
 export const UserContextProvider = ({ children }) => {
   const [users, setUsers] = useState([])
   const [currentUser, setCurrentUser] = useState(null)
+  const [token, setToken] = useState(localStorage.getItem('token'))
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
     if (token) {
       try {
         const decodedToken = jwt_decode(token)
-
-        const userEmail =
-          decodedToken[
-            'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'
-          ]
-        const userName =
-          decodedToken[
-            'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
-          ]
-        const userRole =
-          decodedToken[
-            'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
-          ]
-
         setCurrentUser({
-          name: userName,
-          email: userEmail,
-          userrole: userRole,
+          name: decodedToken[
+            'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
+          ],
+          email:
+            decodedToken[
+              'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'
+            ],
+          role: decodedToken[
+            'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
+          ],
         })
       } catch (error) {
         console.error('Error decoding token:', error)
+        setError(error)
       }
     }
-  }, [])
+  }, [token])
 
   const refreshUsers = async () => {
     try {
@@ -55,36 +49,31 @@ export const UserContextProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const token = await GetLoginAsync(email, password)
-      if (token) {
-        const user = jwt_decode(token)
-        setCurrentUser(user)
-        localStorage.setItem('token', token)
-      } else {
-        throw new Error('Invalid login credentials')
-      }
+      const jwtToken = await GetLoginAsync(email, password)
+      localStorage.setItem('token', jwtToken)
+      setToken(jwtToken)
     } catch (err) {
-      setError(err.message || 'An error occurred during login')
+      setError('Login failed: ' + err.message)
+      console.error('Login failed:', err)
       throw err
     }
   }
 
   const register = async (userData) => {
     try {
-      const token = await GetRegisterAsync(userData)
-      if (token) {
-        const user = jwt_decode(token)
-        setCurrentUser(user)
-        localStorage.setItem('token', token)
-      }
+      const jwtToken = await GetRegisterAsync(userData)
+      localStorage.setItem('token', jwtToken)
+      setToken(jwtToken)
     } catch (err) {
-      setError(err.message || 'An error occurred during registration')
+      setError('Registration failed: ' + err.message)
+      console.error('Registration failed:', err)
       throw err
     }
   }
 
   const logout = () => {
     localStorage.removeItem('token')
+    setToken(null)
     setCurrentUser(null)
   }
 

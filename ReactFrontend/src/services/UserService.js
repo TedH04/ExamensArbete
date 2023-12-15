@@ -12,9 +12,8 @@ export const GetLoginAsync = async (email, password) => {
       throw new Error(`HTTP error! status: ${res.status}`)
     }
 
-    // Assuming the response is just a JWT string
     const jwtToken = await res.text()
-    return jwtToken // Return the JWT token
+    return jwtToken
   } catch (err) {
     console.error('Login failed:', err)
     throw err
@@ -35,8 +34,8 @@ export const GetRegisterAsync = async (userData) => {
       throw new Error(`HTTP error! status: ${res.status}`)
     }
 
-    const jwtToken = await res.text() // Get the JWT token as a string
-    return jwtToken // Return the JWT token
+    const jwtToken = await res.text()
+    return jwtToken
   } catch (err) {
     console.error('Registration failed:', err)
     throw err

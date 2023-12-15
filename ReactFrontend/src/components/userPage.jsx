@@ -62,10 +62,13 @@ export const UserPage = () => {
   const [isAdminOrEmployee, setIsAdminOrEmployee] = useState(false);
 
   useEffect(() => {
-    if (currentUser && currentUser.userrole) {
-      const roles = currentUser.userrole; 
+    if (currentUser && currentUser.role) {
+      const roles = currentUser.role; 
       setIsAdminOrEmployee(roles.includes('Admin') || roles.includes('Employee'));
       refreshJobRequests();
+    }
+    else{
+      currentUser.role = "Vanligt"
     }
   }, [currentUser, refreshJobRequests]);
 
@@ -75,7 +78,7 @@ export const UserPage = () => {
         <>
           <h1>Welcome, {currentUser.name}</h1>
           <p>Email: {currentUser.email}</p>
-          <p>User Role: {currentUser.userrole}</p>
+          <p>Konto typ: {currentUser.role}</p>
           {}
           {isAdminOrEmployee && (
             <section className="job-requests">

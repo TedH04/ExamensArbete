@@ -1,8 +1,15 @@
-import React, { createContext, useState, useEffect, useRef } from 'react'
+import React, {
+  createContext,
+  useState,
+  useEffect,
+  useRef,
+  useContext,
+} from 'react'
+import { UserContext } from './UserContext'
 import {
   GetCreateJobRequestAsync,
   GetAllJobRequestsAsync,
-  // GetDeleteJobRequestAsync, // Remove if not used
+  // GetDeleteJobRequestAsync,
 } from '../services/JobService'
 
 export const JobContext = createContext()
@@ -10,18 +17,19 @@ export const JobContext = createContext()
 export const JobContextProvider = ({ children }) => {
   const [jobRequests, setJobRequests] = useState([])
   const [error, setError] = useState(null)
-  const isMounted = useRef(true) // To keep track of whether the component is mounted
+  const isMounted = useRef(true)
+  const { currentUser } = useContext(UserContext)
 
   useEffect(() => {
-    // ComponentDidMount
-    isMounted.current = true // The component is mounted
-    refreshJobRequests()
-
-    // ComponentWillUnmount
-    return () => {
-      isMounted.current = false // The component will unmount
+    isMounted.current = true
+    if (currentUser) {
+      refreshJobRequests()
     }
-  }, [])
+
+    return () => {
+      isMounted.current = false
+    }
+  }, [currentUser])
 
   const refreshJobRequests = async () => {
     try {
