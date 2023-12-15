@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/ExamensArbete/static/css/main.d13453d4.css",
+    "main.js": "/ExamensArbete/static/js/main.53cfcd46.js",
+    "static/media/headerBG.png": "/ExamensArbete/static/media/headerBG.b85ca28c88025870e54d.png",
+    "index.html": "/ExamensArbete/index.html",
+    "main.d13453d4.css.map": "/ExamensArbete/static/css/main.d13453d4.css.map",
+    "main.53cfcd46.js.map": "/ExamensArbete/static/js/main.53cfcd46.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d13453d4.css",
+    "static/js/main.53cfcd46.js"
+  ]
+}
