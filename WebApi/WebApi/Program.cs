@@ -57,7 +57,7 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "JLH Website API", Version = "v1" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Description = @"JWT Authorization header test Example: 'Bearer 12345abcdef'",
+        Description = @"JWT Authorization test Example: 'Bearer 12345abcdef'",
         Name = "Authorization",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.ApiKey,
@@ -84,7 +84,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Add cors policy
+// Add cors policy  
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("Allow",
