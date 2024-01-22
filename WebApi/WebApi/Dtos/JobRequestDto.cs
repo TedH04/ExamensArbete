@@ -8,6 +8,7 @@ namespace WebApi.Dtos
         public int Id { get; set; }
         [Required]
         public string? CustomerName { get; set; }
+        public string? CustomerPhoneNumber { get; set; }
         public string? CompanyName { get; set; }
         [Required]
         public string? JobTitle { get; set; }

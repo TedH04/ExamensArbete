@@ -12,7 +12,7 @@ export const Navigation = (props) => {
           <Nav className="ml-auto">
             <Nav.Link href="#features">Tjänster</Nav.Link>
             <Nav.Link href="#about">Om oss</Nav.Link>
-            <Nav.Link href="#services">venne vad</Nav.Link>
+            <Nav.Link href="#services">Skriv om services</Nav.Link>
             <Nav.Link href="#portfolio">Galleri</Nav.Link>
             <Nav.Link href="#testimonials">Recensioner</Nav.Link>
             <Nav.Link href="#team">Team</Nav.Link>

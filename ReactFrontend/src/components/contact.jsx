@@ -13,6 +13,7 @@ const initialState = {
   city: "",
   postalCode: "",
   email: "",
+  phoneNumber: "",
   description: "",
   companyName: "",
   orgNumber: "",
@@ -66,6 +67,7 @@ export const Contact = (props) => {
       jobZip: state.postalCode,
       orgNumber: state.orgNumber,
       contactEmail: state.email,
+      phoneNumber: state.number,
       isCompany: state.customerType === "company",
     };
 
@@ -133,6 +135,17 @@ export const Contact = (props) => {
             className="form-control"
             placeholder="Email"
             value={state.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <input
+            type="phonenumber"
+            name="phonenumber"
+            className="form-control"
+            placeholder="Phone number"
+            value={state.phoneNumber}
             onChange={handleChange}
             required
           />
@@ -254,6 +267,14 @@ export const Contact = (props) => {
                   <i className="fa fa-envelope-o"></i> Email: 
                 </span>{" "}
                 {props.data ? props.data.email : "loading"}
+              </p>
+            </div>
+            <div className="contact-item">
+              <p>
+                <span>
+                  <i className="fa fa-envelope-o"></i> Phone Number: 
+                </span>{" "}
+                {props.data ? props.data.phoneNumber : "loading"}
               </p>
             </div>
           </div>

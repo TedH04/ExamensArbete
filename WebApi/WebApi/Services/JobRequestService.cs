@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using WebApi.Data;
 using WebApi.Dtos;
@@ -10,11 +11,13 @@ namespace WebApi.Services
     {
         private readonly AppDbContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly UserManager<User> _userManager;
 
-        public JobRequestService(AppDbContext context, IHttpContextAccessor httpContextAccessor)
+        public JobRequestService(AppDbContext context, IHttpContextAccessor httpContextAccessor, UserManager<User> userManager)
         {
             _context = context;
             _httpContextAccessor = httpContextAccessor;
+            _userManager = userManager;
         }
 
         public async Task<JobRequest> CreateJobRequest(JobRequestDto jobRequestDto)
@@ -25,16 +28,25 @@ namespace WebApi.Services
                 throw new UnauthorizedAccessException("User must be logged in to create a job request.");
             }
 
+
+
+            //var userName = httpContext.User.FindFirst(ClaimTypes.Name)?.Value;
+            //if (string.IsNullOrWhiteSpace(userName))
+            //{
+            //    throw new InvalidOperationException("User's email not found in the token.");
+            //}
             var userEmail = httpContext.User.FindFirst(ClaimTypes.Email)?.Value;
-            if (string.IsNullOrWhiteSpace(userEmail))
+            var user = await _userManager.FindByEmailAsync(userEmail);
+            if (user == null)
             {
-                throw new InvalidOperationException("User's email not found in the token.");
+                throw new InvalidOperationException("User not found.");
             }
 
-            var userName = httpContext.User.FindFirst(ClaimTypes.Name)?.Value;
-            if (string.IsNullOrWhiteSpace(userName))
+            var customerPhoneNumber = user.PhoneNumber;
+            var userName = user.UserName;
+            if (string.IsNullOrWhiteSpace(customerPhoneNumber) || string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(userEmail))
             {
-                throw new InvalidOperationException("User's email not found in the token.");
+                throw new InvalidOperationException("User's cred not found in the token.");
             }
 
             var jobRequest = new JobRequest
@@ -47,6 +59,7 @@ namespace WebApi.Services
                 JobAddress = jobRequestDto.JobAddress,
                 JobCity = jobRequestDto.JobCity,
                 JobZip = jobRequestDto.JobZip,
+                CustomerPhoneNumber = customerPhoneNumber, // set from currently loggedin user (if logged in)
                 OrgNumber = jobRequestDto.OrgNumber,
                 ContactEmail = userEmail, // set email from currently loggedin user (if logged in)
                 IsCompany = jobRequestDto.IsCompany
@@ -68,6 +81,7 @@ namespace WebApi.Services
                 CompanyName = jr.CompanyName,
                 JobTitle = jr.JobTitle,
                 JobDescription = jr.JobDescription,
+                CustomerPhoneNumber = jr.CustomerPhoneNumber,
                 JobAddress = jr.JobAddress,
                 JobCity = jr.JobCity,
                 JobZip = jr.JobZip,

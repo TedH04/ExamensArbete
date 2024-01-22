@@ -31,7 +31,7 @@ const JobRequestItem = ({ request, deleteJobRequest }) => {
       </div>
       {isOpen && (
         <div className="job-request-details">
-          <div className='jobCustomer'>Kund namn: {request.customerName}</div>
+          <div className='jobCustomer'>Kund namn: {request.customerName} <br /> Nummer: {request.customerPhoneNumber}</div>
           <div className='jobDescription'>{request.jobDescription}</div>
           <div className='jobAddress'>Address: {request.jobAddress}</div>
           <div className='jobCity'>City: {request.jobCity}</div>

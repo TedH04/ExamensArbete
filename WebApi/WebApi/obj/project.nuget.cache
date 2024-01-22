@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uSVJkVjra2v7Lk5UHaP/uoxF4DZdA8yUhPNbubn1Uh30ZEp59kZpMirbLjG+/NcG3HS3QN13khFTm7N7tTTYnA==",
+  "dgSpecHash": "eAlDjhhfpuUHvs8/Mf24U1rZHbZuK9VaT3ZGdcH96glsCsGjxEeGiMjRC3RUblXNhXv11QfzFG148a8biv/WOA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ted Hamren\\Desktop\\Examensarbetet\\ExamensArbete\\WebApi\\WebApi\\WebApi.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,7 @@
     "C:\\Users\\Ted Hamren\\.nuget\\packages\\microsoft.entityframeworkcore.design\\8.0.0\\microsoft.entityframeworkcore.design.8.0.0.nupkg.sha512",
     "C:\\Users\\Ted Hamren\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\8.0.0\\microsoft.entityframeworkcore.relational.8.0.0.nupkg.sha512",
     "C:\\Users\\Ted Hamren\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\8.0.0\\microsoft.entityframeworkcore.sqlserver.8.0.0.nupkg.sha512",
+    "C:\\Users\\Ted Hamren\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\8.0.0\\microsoft.entityframeworkcore.tools.8.0.0.nupkg.sha512",
     "C:\\Users\\Ted Hamren\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\Ted Hamren\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\8.0.0\\microsoft.extensions.caching.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\Ted Hamren\\.nuget\\packages\\microsoft.extensions.caching.memory\\8.0.0\\microsoft.extensions.caching.memory.8.0.0.nupkg.sha512",
