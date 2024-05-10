@@ -20,131 +20,37 @@
   },
   "Gallery": [
     {
-      "title": "Project Title",
-      "largeImage": "img/portfolio/01-large.jpg",
-      "smallImage": "img/portfolio/01-small.jpg"
+      "title": "Project Title"
     },
     {
-      "title": "Project Title",
-      "largeImage": "img/portfolio/02-large.jpg",
-      "smallImage": "img/portfolio/02-small.jpg"
+      "title": "Project Title"
     },
     {
-      "title": "Project Title",
-      "largeImage": "",
-      "smallImage": ""
+      "title": "Project Title"
     },
     {
-      "title": "Project Title",
-      "largeImage": "",
-      "smallImage": ""
+      "title": "Project Title"
     },
     {
-      "title": "Project Title",
-      "largeImage": "",
-      "smallImage": ""
+      "title": "Project Title"
     },
     {
-      "title": "Project Title",
-      "largeImage": "",
-      "smallImage": ""
+      "title": "Project Title"
     },
     {
-      "title": "Project Title",
-      "largeImage": "",
-      "smallImage": ""
+      "title": "Project Title"
     },
     {
-      "title": "Project Title",
-      "largeImage": "",
-      "smallImage": ""
+      "title": "Project Title"
     },
     {
-      "title": "Project Title",
-      "largeImage": "",
-      "smallImage": ""
-    }
-  ],
-  "Services": [
-    {
-      "icon": "fa fa-wordpress",
-      "name": "här skrivs nånting",
-      "text": " här skrivs nånting mer"
-    },
-    {
-      "icon": "fa fa-cart-arrow-down",
-      "name": "Här skrivs nåtning",
-      "text": "Här skrivs nåtning mer"
-    },
-    {
-      "icon": "fa fa-cloud-download",
-      "name": "Här skrivs nåtning",
-      "text": "Här skrivs nåtning mer"
-    },
-    {
-      "icon": "fa fa-language",
-      "name": "Här skrivs nåtning",
-      "text": "Här skrivs nåtning mer"
-    },
-    {
-      "icon": "fa fa-plane",
-      "name": "Här skrivs nåtning",
-      "text": "Här skrivs nåtning mer"
-    },
-    {
-      "icon": "fa fa-pie-chart",
-      "name": "Här skrivs nåtning",
-      "text": "Här skrivs nåtning mer"
-    }
-  ],
-  "Testimonials": [
-    {
-      "img": "img/testimonials/01.jpg",
-      "text": "\"Här skrivs nåtning mer\"",
-      "name": "kalle ankarsson"
-    },
-    {
-      "img": "img/testimonials/02.jpg",
-      "text": "\"Här skrivs nåtning mer\"",
-      "name": "kalle ankarsson"
-    },
-    {
-      "img": "img/testimonials/03.jpg",
-      "text": "\"Här skrivs nåtning mer\"",
-      "name": "kalle ankarsson"
-    },
-    {
-      "img": "img/testimonials/04.jpg",
-      "text": "\"Här skrivs nåtning mer\"",
-      "name": "kalle ankarsson"
-    },
-    {
-      "img": "img/testimonials/05.jpg",
-      "text": "\"Här skrivs nåtning mer\"",
-      "name": "kalle ankarsson"
-    },
-    {
-      "img": "img/testimonials/06.jpg",
-      "text": "\"Här skrivs nåtning mer\"",
-      "name": "kalle ankarsson"
-    }
-  ],
-  "Team": [
-    {
-      "img": "img/team/01.jpg",
-      "name": "kalle ankarsson",
-      "job": "Chief Executive Officer"
-    },
-    {
-      "img": "img/team/04.jpg",
-      "name": "kalle ankarsson",
-      "job": "Vice President"
+      "title": "Project Title"
     }
   ],
   "Contact": {
-    "address": "Adress Spånga ",
-    "phone": "+46 709 298983",
-    "email": "info@jlhel.se",
+    "address": " Adress Spånga ",
+    "phone": " +46 709 298983",
+    "email": " info@jlhel.se",
     "facebook": "fb.com",
     "twitter": "twitter.com",
     "youtube": "youtube.com"

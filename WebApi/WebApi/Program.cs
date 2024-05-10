@@ -20,9 +20,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 
 // Add identity
-builder.Services.AddIdentity<User, IdentityRole>()
-    .AddEntityFrameworkStores<AppDbContext>()
-    .AddDefaultTokenProviders();
+builder.Services.AddIdentity<User, IdentityRole>(options => {
+    options.User.RequireUniqueEmail = true;
+    }).AddEntityFrameworkStores<AppDbContext>()
+      .AddDefaultTokenProviders();
 
 // Add authentication
 builder.Services.AddAuthentication(options =>

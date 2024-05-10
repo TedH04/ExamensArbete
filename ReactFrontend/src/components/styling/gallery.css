@@ -3,6 +3,10 @@
     background: linear-gradient(to bottom, #F6C199 0%, #F9D9C1 100%);
     border-bottom: 1px solid #0000002d;
   }
+  .portfolio-items .col-sm-6.col-md-4.col-lg-4 {
+    display: inline-block;
+    vertical-align: top; 
+  }
   .portfolio-item {
     margin: 1px -15px 0 -14px;
     padding: 0;

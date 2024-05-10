@@ -65,12 +65,15 @@ export const UserPage = () => {
     if (currentUser && currentUser.role) {
       const roles = currentUser.role; 
       setIsAdminOrEmployee(roles.includes('Admin') || roles.includes('Employee'));
-      refreshJobRequests();
     }
     else{
       currentUser.role = "Vanligt"
     }
   }, [currentUser, refreshJobRequests]);
+
+  const handleRefresh = () => {
+    refreshJobRequests();
+  };
 
   return (
     <div id='userpage' className="user-page-container">
@@ -79,10 +82,10 @@ export const UserPage = () => {
           <h1>Welcome, {currentUser.name}</h1>
           <p>Email: {currentUser.email}</p>
           <p>Konto typ: {currentUser.role}</p>
-          {}
           {isAdminOrEmployee && (
             <section className="job-requests">
               <h2>Job Requests</h2>
+              <button className="refresh-button" onClick={handleRefresh}>Refresh Job Requests</button>
               <div className="job-requests-list">
                 {Array.isArray(jobRequests) && jobRequests.map((request, index) => (
                   <JobRequestItem key={index} request={request} deleteJobRequest={deleteJobRequest} />
