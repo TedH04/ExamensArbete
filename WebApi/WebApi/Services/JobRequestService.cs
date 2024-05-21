@@ -33,7 +33,7 @@ namespace WebApi.Services
             //var userName = httpContext.User.FindFirst(ClaimTypes.Name)?.Value;
             //if (string.IsNullOrWhiteSpace(userName))
             //{
-            //    throw new InvalidOperationException("User's email not found in the token.");
+            //    throw new InvalidOperationException("Users email not found.");
             //}
             var userEmail = httpContext.User.FindFirst(ClaimTypes.Email)?.Value;
             var user = await _userManager.FindByEmailAsync(userEmail);

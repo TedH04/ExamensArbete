@@ -156,6 +156,7 @@ export const Contact = () => {
                       value={state.name}
                       onChange={handleChange}
                       required
+                      disabled
                     />
                   </div>
                   <div className="form-group">
@@ -199,7 +200,7 @@ export const Contact = () => {
                       placeholder="Email"
                       value={state.email}
                       onChange={handleChange}
-                      required
+                      disabled
                     />
                   </div>
                   <div className="form-group">
@@ -207,10 +208,10 @@ export const Contact = () => {
                       type="phoneNumber"
                       name="phoneNumber"
                       className="form-control"
-                      placeholder="Phone number"
+                      placeholder="Anges automatiskt om du är inloggad"
                       value={state.phoneNumber}
                       onChange={handleChange}
-                      required
+                      disabled
                     />
                   </div>
                   <div className="form-group">

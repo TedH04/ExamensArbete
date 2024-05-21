@@ -42,7 +42,9 @@ public class AuthenticationService : IAuthenticationService
             Email = request.Email,
             UserName = request.Username,
             PhoneNumber = request.PhoneNumber,
-            PasswordHash = HashPassword(request.Password)
+            PasswordHash = HashPassword(request.Password),
+            NormalizedEmail = request.Email.ToUpper(),
+            NormalizedUserName = request.Username.ToUpper()
         };
 
         await _context.Users.AddAsync(user);
